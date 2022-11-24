@@ -37,7 +37,7 @@ const AvailableMeals = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    
+
     useEffect(() => {
         setIsLoading(true)
         fetch('/meals')
@@ -52,7 +52,7 @@ const AvailableMeals = () => {
             })
             .catch(err => setError(err.message))
         setIsLoading(false)
-    }, [meals])
+    }, [])
 
     let content = <li>No Meals Available</li>
 
@@ -65,10 +65,10 @@ const AvailableMeals = () => {
     }
 
     if (meals.length > 0) {
-        content = meals.map(meal => 
+        content = meals.map(meal =>
             <MealItem
                 key={meal._id}
-                id={meal.id}
+                id={meal._id}
                 name={meal.name}
                 description={meal.description}
                 price={meal.price}
